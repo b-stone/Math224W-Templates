@@ -1,0 +1,206 @@
+\documentclass{amsart}
+
+\include{preamble-DO-NOT-EDIT}
+
+%------------------------------------------------------
+% Packages -- If you find new packages you like, use them here. 
+%------------------------------------------------------
+\usepackage{amssymb, amsmath, latexsym, amsfonts, amsthm, mathrsfs} % Standard packages that are nice to have.
+
+
+%------------------------------------------------------
+% New Macros to make life easier try making your own!
+%------------------------------------------------------
+\DeclareMathOperator{\Row}{row}
+\DeclareMathOperator{\Col}{col}
+\DeclareMathOperator{\trace}{Tr}
+
+\newcommand{\ds}{\displaystyle} % no one likes to write \displaystyle, so we change it to \ds
+
+
+%------------------------------------------------------
+% Main Document Body
+%------------------------------------------------------
+\begin{document}
+
+\WAtitle{2}{February 6, 2019} %% Put the assignment number in the first { } and the due date in the second { }
+\WAauthors{Rella Stone and Tipper Gibbons} %% Put the authors here
+
+
+\begin{defn*}
+	A function $f$ mapping from the domain $D$ to a range $R$ is \defi{additive} if $f(\alpha+\beta) = f(\alpha)+f(\beta)$ for any elements $\alpha$, $\beta$ in the domain. 
+\end{defn*}
+
+\begin{prop*}[Additivity of Matrices]
+	Every $2\times 2$ matrix of real numbers is additive. 
+\end{prop*}
+\begin{proof}
+	
+	Let $A = \begin{bmatrix}
+		a & b \\
+		c & d
+	\end{bmatrix}$ be a matrix with $a$, $b$, $c$, $d$ real numbers. If we let $\alpha = \begin{pmatrix}
+		\alpha_1 \\
+		\alpha_2
+	\end{pmatrix}$ and $\beta = \begin{pmatrix}
+		\beta_1 \\
+		\beta_2
+	\end{pmatrix}$ be two vectors in the domain of $A$, then we need to show that $A(\alpha + \beta) = A\alpha + A\beta$. To do this we will show the left hand side of the equation equals the right hand side. 
+
+	On the left hand side, using the matrix as a function, we have 
+	\begin{align*}
+		A(\alpha + \beta) & = \text{Calculate this} \\
+			& =  \\
+			& = \text{Don't forget the period}.
+	\end{align*}
+
+	Likewise on the right hand side, we obtain
+	\begin{align*}
+		A\alpha + A\beta & = \text{Calculate this} \\
+			& =  \\
+			& = \text{Don't forget the period}.
+	\end{align*}	
+
+	As $A(\alpha + \beta)$ and $A\alpha + A\beta$ equal the same expression, we know they are equal and thus $A$ is additive. 
+\end{proof}
+
+
+\begin{prop*}[\S1.3, \#28a] 
+Let $A$ be an $m \times n$ matrix with a row consisting entirely of zeros. If $B$ is an $n \times p$ matrix, then $AB$ has a row of zeros.
+\end{prop*}
+
+\begin{proof}
+	Start your proof with the sentence ``Assume that the $i$-th row of $A$ consists entirely of zeros; that is, assume that 
+	\[
+		\Row_i(A) = \begin{bmatrix} 0 & 0 & \dots & 0\end{bmatrix}.'' 
+	\]
+	{\bf Do not} assume that $i=1$! {\it Which} row of $AB$ consists entirely of zeros?  {\bf \underline{Why?}}  Use a similar approach for \#28(b). 
+\end{proof}
+
+
+
+
+
+
+\begin{prop*}[\S1.3, \#28b] 
+(The statement you wish to prove should be written here; for example: ``For all square matrices $A$, if $A$ is symmetric, then $A^T$ is symmetric.'')
+\end{prop*}
+
+\begin{proof}
+	Write your proof here using good proof techniques. 
+\end{proof}
+
+
+
+
+%-----------------------------------------------------------------
+% Note: Check out WA-0.tex for the proof of \S1.3, \#43c
+%-----------------------------------------------------------------
+
+\begin{defn*}
+If $A = [a_{ij}]$ is an $n \times n$ matrix, then the \defi{trace} of $A$, $\trace(A)$, is defined to be the sum of the elements on the main diagonal of $A$.  That is, 
+\[
+\trace(A) = \sum_{i = 1}^n a_{ii}.
+\]
+\end{defn*}
+
+
+
+\begin{prop*}[A Property of the Trace, \S1.3, \#43e] 
+If $A$ is an $n \times n$ matrix, then $\trace(A^{T} A) \geq 0$.
+\end{prop*}
+
+%-----------------------------------------------------------------
+% Feedback to the original proof-writer: You have the right idea,
+% but you didn't use the definition of matrix multiplication 
+% correctly.  Write down an example of the trace of a 2 by 2 matrix
+% A (like row_1(A) = [2,-1], row_2(A) = [-2,0]) and its transpose, 
+% then find product, then find the trace of the product (it's 
+% bigger than 4).  That will show you where you went wrong in the
+% last line of your proof.
+%-----------------------------------------------------------------
+
+\begin{proof} 
+Assume that $A$ is an $n \times n$ matrix. By definition of trace, $\trace(A^{T}A) = \trace(A^{T})\trace(A)$.  By \#43d (shown below), $\trace(A^{\text{T}}) =\trace(A)$.
+
+Hence, $\trace(A^{T}A) = \left( \sum_{i=1}^n a_{ii} \right)^2$, which is greater than or equal to zero because it is a square.
+\end{proof}
+
+
+
+
+\begin{prop*}[More Properties of the Trace, \S1.3, \#43a,b,d]
+
+% Put your statement you want to prove here. 
+
+\end{prop*}
+
+
+
+
+
+\begin{prop*}[\S1.4, \#4(b)] 
+If $A$, $B$, and $C$ are matrices of appropriate sizes, then $(A+B)C = AC + BC$.
+\end{prop*}
+
+%-----------------------------------------------------------------
+% Construct the proof of this statement by putting the following
+% statements in order within a proof environment; then delete this 
+% comment.  Note that the expressions in the align* environment 
+% should ultimately remain in there, but that you will need to 
+% reorder some or them so that they flow naturally (think about the 
+% steps you would take to simplify an expression to work toward your
+% goal
+%-----------------------------------------------------------------
+
+\begin{proof}
+This equality holds for all $1 \leq i \leq m$ and $1 \leq k \leq p$, and thus $(A+B)C = AC + BC$ as desired.\textbf{}
+
+By the properties of matrix addition, the matrix $A+B$ has entries $a_{ij} + b_{ij}$ for $1 \leq i \leq m$ and $1 \leq j \leq n$.
+
+By the definition of matrix multiplication and a previous writing assignment (\S1.2 \#17),
+
+Suppose that $A = [a_{ij}]$ and $B = [b_{ij}]$ are $m\times n$ matrices and $C = [c_{jk}]$ is an $n \times p$ matrix.
+
+Let $m$, $n$, and $p$ be positive integers.
+
+\begin{align*}
+[(A+B)C]_{ik} 
+    &= \Row_{i}(A+B)^T \cdot \Col_{k}(C) \\
+    &= \sum_{j = 1}^n (a_{ij} + b_{ij})c_{jk}\\
+    &= [AC + BC]_{ik}\\
+    &= \Row_{i}(A)^T\cdot \Col_k(C) + \Row_{i}(B)^T \cdot \Col_k(C)\\
+    &= [AC]_{ik} + [BC]_{ik}\\
+    &= \sum_{j = 1}^n a_{ij}c_{jk} + \sum_{j = 1}^n b_{ij}c_{jk}
+\end{align*}
+\end{proof}
+
+
+
+
+
+\begin{thm*}[\S1.4, \#7] 
+Prove that $CA = \sum_{j = 1}^m c_j A_j$. 
+\end{thm*}
+
+%-----------------------------------------------------------------
+% Note: that does *not* look like a well-formed proposition! If I 
+% were grading this statement I would ask "What is C? What is A? 
+% What about m? Do propositions have words like "Prove that" in 
+% them?
+%-----------------------------------------------------------------
+
+
+\begin{proof} 
+%%% Your proof here.  Probably a good idea to work it out on paper first.
+\end{proof}
+
+
+
+
+
+
+
+	
+
+\end{document}

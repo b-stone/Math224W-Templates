@@ -1,0 +1,214 @@
+\documentclass{amsart}
+
+\include{preamble-DO-NOT-EDIT}
+
+%------------------------------------------------------
+% Packages -- If you find new packages you like, use them here. 
+%------------------------------------------------------
+\usepackage{amssymb, amsmath, latexsym, amsfonts, amsthm, mathrsfs} % Standard packages that are nice to have.
+
+
+%------------------------------------------------------
+% New Macros to make life easier try making your own!
+%------------------------------------------------------
+\DeclareMathOperator{\Row}{row}
+\DeclareMathOperator{\Col}{col}
+\DeclareMathOperator{\trace}{Tr}
+
+\newcommand{\ds}{\displaystyle} % no one likes to write \displaystyle, so we change it to \ds
+
+
+
+%------------------------------------------------------
+% Main Document Body
+%------------------------------------------------------
+\begin{document}
+
+\WAtitle{0}{January 22, 2019} %% Put the assignment number in the first { } and the due date in the second { }
+\WAauthors{Professor Stone and Rella Stone} %% Put the author here
+
+
+	
+%-------------------------------------------------------------
+% Document Body: Essentially this is where you place the 
+% content of your document. To use this template, just delete
+% all of the text between here and the `\end{document}'.
+% Then type whatever you desire.
+%-------------------------------------------------------------
+
+Almost all mathematics is written in \LaTeX\ nowadays. I will give a few tips and tricks on using \LaTeX\ here and in class, but for the most part you will be on your own when it comes to learning how to use it (of course you can always stop by office hours with questions). The great thing about using \LaTeX\ is that it only will do what you tell it to do. The bad part about using \LaTeX\ is that it only will do what you tell it to do. That is, it can be a pain to find errors. It has a steep learning curve, but once you gain the basics, it will greatly help you in future classes. 
+
+First off, I want to explain a little about how to use \LaTeX. There are many files associated to your document, but there are only two you should be concerned with. They are the `.tex' file and the `.pdf' file. The TEX file is what you write in and the PDF is what you send to people.  Basically \LaTeX\ allows you to generate your own PDFs. 
+
+While creating the PDF from the TEX file can be done locally on your machine, in this class we will be using \url{https://www.overleaf.com} to typeset our writing assignments. This site is free to use and I will be posting templates on my account that you can copy and use. I hope you have fun with this and feel free to ask me if you have any questions.
+
+There is a lot to learn about \LaTeX, but I hope this will get you started. I you are stuck I recommend the following resources.
+\begin{enumerate}
+  \item \url{http://detexify.kirelabs.org/classify.html} -- Draw the symbol you want and it gives the code!
+  \item \url{http://www.google.com}
+  \item \url{https://tobi.oetiker.ch/lshort/lshort.pdf}
+\end{enumerate}
+The second reference is not a joke. If you get stuck on anything pertaining to \LaTeX, just google it. That should be your first instinct\footnote{This should be your first instinct when dealing with \LaTeX\ problems. This should {\bf NOT} be your first instinct with actually working the math problems.}. The third reference is an nice walk through of what \LaTeX\ can do. 
+
+
+\section{Using Math Environment} \label{math} 
+% The labels can be anything you like! 
+% This allows you to reference a section or comment without 
+% having to figure out what number it is.  LaTeX will keep 
+% track for you.
+
+
+   When inputing an equation or variable in a paragraph, we use the single dollar sign, `\verb|$|'. For example, writing a function might look like this, \verb|$f(x) = 2x^3-4x+2$|. When you compile the expression will look like this in the PDF, $f(x) = 2x^3-4x+2$. This allows us to quickly write complex expressions without the need for a special editor.
+
+   If you are wanting to create a centered math expression, you can use the double dollar sign, `\verb|$$|', or use open and closed brackets `\verb|\[...\]|'. For example, you could write
+      \begin{center}
+         \verb|$$\lim_{x\to -1} \frac{x^2-1}{x+1}$$|
+      \end{center}
+   or you could use
+      \begin{center} 
+         \begin{verbatim}
+         \[
+            \lim_{x\to -1} \frac{x^2-1}{x+1}
+         \]         
+         \end{verbatim}
+      \end{center}
+   Both expressions will give you the desired result.  That is you will see this with the dollar sign, 
+   $$\lim_{x\to -1} \frac{x^2-1}{x+1},$$
+   and this with the brackets,
+      \[
+          \lim_{x\to -1} \frac{x^2-1}{x+1}.
+      \]     
+
+
+   I would like to mention one formating concern. Let's say I want to write the above expression in a paragraph, and not centered. Then I would just write \verb|$\lim_{x\to -1} \frac{x^2-1}{x+1}$| to get $\lim_{x\to -1} \frac{x^2-1}{x+1}$. Notice that it does not look like it did when we centered it. This is because we are putting it into a small space in the paragraph. But we can override this. Just use the command \verb|\displaystyle| in the dollar signs like this, \verb|$\displaystyle \lim_{x\to -1} \frac{x^2-1}{x+1}$|. Now your expression should look like this, $\displaystyle \lim_{x\to -1} \frac{x^2-1}{x+1}$.
+
+
+   Sometimes it is nice to place several mathematical expressions on multiple lines. For this we can use the \verb|align| environment. We can use it as follows.
+   \begin{verbatim}
+   \begin{align*}
+      \lim_{x\to -1} \frac{x^2-1}{x+1} & = \lim_{x\to -1} \frac{(x-1)(x+1)}{x+1} \\
+         &= \lim_{x\to -1} x-1 \\
+         & = -2.
+   \end{align*}
+   \end{verbatim}
+   The output of this will look like this.
+   \begin{align*}
+      \lim_{x\to -1} \frac{x^2-1}{x+1} & = \lim_{x\to -1} \frac{(x-1)(x+1)}{x+1} \\
+         &= \lim_{x\to -1} x-1 \\
+         & = -2.
+   \end{align*}
+   Notice that the \verb|&| force the equal signs to line up and the \verb|\\| define the new line. 
+
+
+\section{Writing Answers to Homework Assignments}
+
+When writing your answers out, we will do so in a Theorem (or Proposition) environment. It will look something like this. 
+
+\begin{prop*} For all $a,b,c \in \mathbb{R}$, the following properties hold:
+\begin{enumerate}
+\item Addition is commutative: $a+b = b+a$.
+\item Addition is associative: $(a+b)+c = a+(b+c)$.
+\item Multiplication is distributive over addition: $a(b+c) = ab + ac$.
+\item Multiplication is commutative: $ab = ba$.
+\item Multiplication is associative: $(ab)c=a(bc)$
+\item There exists an additive identity $0$ such that $a + 0 = 0 + a = a$.
+\item Given $a$, there exists an additive inverse $d$ such that $a+d = d+a = 0$; we refer to this number as $-a$ and for real numbers, $-a = -1\cdot a$.
+\item There exists a multiplicative identity $1$ such that $a1 = 1a = a$.
+\item Given $a \not = 0$, there exists a multiplicative inverse $d$ such that $ad = da = 1$; we refer to this number as $a^{-1}$ and for real numbers, $a^{-1} = 1/a$.
+\item Multiplication has the zero-product property: if $ab = ba = 0$, then one of $a$ or $b$ is zero.
+\end{enumerate}
+\end{prop*}
+ 
+Not only is this an example of what your work will look like, you can also use these properties of real number operations in your writing assignments by referring to their names.  For example, you might say ``by the commutative and associative properties of addition of real numbers, 
+\begin{align*}
+a_{1,1} + (a_{1,2} + a_{1,3}) 
+    &= (a_{1,2} + a_{1,3}) + a_{1,1}\\ 
+    &= a_{1,2} + (a_{1,3} + a_{1,1})
+\end{align*}
+
+Sometimes we will investigate the trace of a matrix.
+
+\begin{defn*} If $A = [a_{ij}]$ is an $n \times n$ matrix, then the \defi{trace} of $A$, $\trace(A)$, is defined to be the sum of the elements on the main diagonal of $A$.  That is, 
+\[
+\trace(A) = \sum_{i = 1}^n a_{ii}.
+\]
+\end{defn*}
+
+You may find this proposition and proof helpful for the second writing assignment.
+
+\begin{prop*}[\S1.3, \#43c]  If both $A$ and $B$ are $n \times n$ matrices, then Tr$(AB) =$ Tr$(BA)$. \end{prop*}
+
+\begin{proof} By definition of trace, $\text{Tr}(AB)$ is the sum of the main diagonal entries of $AB$. By definition of matrix multiplication, the $(i,i)$-th entry of $AB$ is 
+\[ [AB]_{ii} = \sum_{k=1}^{n} a_{ik} b_{kj}.\]
+
+Hence, $\text{Tr}(AB) = \sum_{i=1}^n [AB]_{ii} =\sum_{i=1}^n \left( \sum_{k=1}^n a_{ik} b_{ki} \right)$.
+
+Since real number multiplication is commutative, $a_{ik} b_{ki} = b_{ki} a_{ik}$.  By \S1.2, \#18, we can switch the order of summation.  Combining all of the above yields
+\[
+\text{Tr}(AB) = \sum_{i=1}^n \left( \sum_{k=1}^n a_{ik} b_{ki} \right) = \sum_{i=1}^n \left( \sum_{k=1}^n b_{ki} a_{ik} \right) 
+= \sum_{k=1}^n \left( \sum_{i=1}^n b_{ki} a_{ik} \right) = \text{Tr}(BA). 
+\]
+\end{proof}
+
+%-------------------------------------------------------------
+% This is a LaTeX comment. You can't see it when you compile!
+% If you want to use a "%" symbol, you need to type "\%"
+% Another special character like that is "&". Also "$". And "#"...
+%-------------------------------------------------------------
+
+\begin{example*}[p 314] This is a mathematical matrix,
+\[ A = \begin{bmatrix}
+a_{0,0} & a_{0,1} & a_{0,2} \\
+a_{1,0} & a_{1,1} & a_{1,2} \\
+a_{2,0} & a_{2,1} & a_{2,2}
+\end{bmatrix},
+\] \& the diagonal entries are those entries $a_{i,j}$ where $i = j$.
+\end{example*}
+
+Notice that I used a comma after the displayed matrix above.  That's because good grammar is still important in mathematical writing.  The text in this paragraph isn't in what we call an ``environment'' (like a ``proof'' or ``prop*'' environment).  Generally, you will use prop*, proof, and example* environments in your writing assignments.
+
+\begin{prop*} Most good mathematical writing doesn't have \$, \&, or \% in it, anyway.\end{prop*}
+
+\begin{proof} If it did, I would let you use them. But I don't, so it doesn't.  (This is a \textit{\textbf{proof by contrapositive}}, which you'll learn all about in a week or so!) \end{proof}
+
+The next few prop* and proof environments will help you start Writing Assignment \#1.  Copy-paste is one of the most useful aspects of writing math in \LaTeX; you can save a lot of time by recycling code! (Trust me, you will appreciate this during rewrites or after an office hours conversation where you need to rearrange parts of your proof.)
+
+\begin{prop*}[\S1.2, \#17] For real numbers $c, a_i, r_i$, and $s_i$ where $1 \leq i \leq n$ for some positive integer $n$, summation notation satisfies the following properties:
+\begin{enumerate}
+\item $\sum_{i=1}^n (r_i+s_i) a_i = \sum_{i =1}^n r_i a_i + \sum_{i = 1}^n s_i a_i$, and
+\item \textit{(You fill this one in by copying and pasting the text between the dollar signs above and modifying it)}.
+\end{enumerate}
+\end{prop*}
+
+\begin{proof} Let $c, a_i, r_i$, and $s_i$ be real numbers where $1 \leq i \leq n$ for some positive integer $n$.  
+
+For part (a), by the properties of sigma notation, the distributive property of multiplication over addition, and the commutative and associative properties of addition, we have that
+\begin{align*}
+\sum_{i = 1}^n (r_i + s_i)a_i 
+    &= (r_1 + s_1)a_1 + (r_2 + s_2)a_2 + \cdots + (r_n + s_n) a_n \\
+    &= r_1a_1 + s_1a_1 + r_2a_2 + s_2a_2 + \cdots + r_na_n + s_na_n \\
+    &= (r_1a_1 + r_2a_2 + \cdots + r_na_n) + (s_1a_1 + s_2a_2 + \cdots + s_na_n) \\
+    &= \sum_{i = 1}^n r_ia_i + \sum_{i = 1}^n s_ia_i,
+\end{align*}
+as desired.
+
+For part (b), (try this one using the previous part as a template).
+\end{proof}
+
+\begin{prop*}[\S1.2, \#18] \textit{Start this proposition by defining the symbols you're going to use: you should let the reader know that $a_{ij}$ are real numbers for $1 \leq i \leq m$, (a similar statement for $j$), where $m$ and $n$ are (can you guess from the previous proposition?)}, the following equality holds:
+\[ \sum_{i = 1}^n \left( \sum_{j = 1}^m a_{ij} \right) 
+    = \sum_{j = 1}^n \left( \text{\textit{fill this part in}} \right).\]
+\end{prop*}
+
+
+\begin{proof} Assume $a_{ij}$ are real numbers for...
+\end{proof}
+\end{document}
+
+Anything you write after the end of the document doesn't matter to the compiler, so you can leave yourself notes and to-do's here with impunity!
+
+
+
+  
+
+
